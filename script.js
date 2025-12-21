@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "https://processors-light-cycles-potatoes.trycloudflare.com";
+const automodsApi = "https://lift-home-juice-slope.trycloudflare.com";
 
 let mutedSounds = false;
 

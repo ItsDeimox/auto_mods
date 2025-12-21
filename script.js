@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "http://localhost:8000";
+const automodsApi = "https://corolitic-hattie-pseudoeconomically.ngrok-free.dev";
 
 let mutedSounds = false;
 

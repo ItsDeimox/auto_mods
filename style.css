@@ -1,0 +1,264 @@
+@font-face {
+    font-family: 'minecraft';
+    src: url('minecraft.ttf');
+}
+
+
+.dark-theme {
+    --bg: rgb(20, 20, 20);
+    --hl: rgb(240, 240, 240);
+    --hl-off: rgb(40, 40, 40);
+    --light-hl-off: rgba(80, 80, 80);
+    --main: rgb(60, 133, 39);
+    --light-main: rgb(145, 204, 78);
+    --bright-main: rgb(184, 236, 100);
+    --darker-main: rgb(17, 82, 31);
+    --main-off: rgb(22, 63, 39);
+    --main-glow: 0 0 10px rgba(40, 255, 123, 0.3);
+    --border-weight: 3px;
+    --border-weight-large: 5px;
+    --border-radius: 0px;
+    --hover-lightness: 1.25;
+    --loading-color: rgba(70, 113, 255, .4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'minecraft';
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    background-color: var(--bg);
+    color: var(--hl);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(.9) blur(5px);
+}
+
+.input-frame {
+    width: 100%;
+    max-width: 600px;
+    height: 90px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    user-select: none;
+
+    & .logo {
+        width: 100%;
+        max-width: 500px;
+        height: 200px;
+        object-fit: cover;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & .input-wrapper {
+        width: 100%;
+        height: 100%;
+        border: var(--border-weight) solid var(--hl-off);
+        background-color: var(--bg);
+        border-radius: var(--border-radius);
+        position: relative;
+
+        display: flex;
+        
+        transition: 120ms ease;
+
+        & .bar {
+            height: 100%;
+            padding-left: 20px;
+            padding-right: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 2;
+            color: rgba(255, 255, 255, .45);
+            transform: translateY(1px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & .prompt-input {
+            width: 100%;
+            height: 100%;
+            
+            outline: none;
+            background: none;
+            border: none;
+    
+            color: var(--hl);
+            padding: 20px;
+            padding-left: 0;
+            font-size: 20px;
+    
+            transition: 120ms ease;
+        }
+
+        & .sound-icon {
+            background-image: url("./assets/icons/sound.png");
+            height: 100%;
+            aspect-ratio: 1/1;
+            background-size: 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            image-rendering: pixelated;
+            position: absolute;
+            right: -60px;
+            cursor: pointer;
+
+            &.muted {
+                background-image: url("./assets/icons/muted_sound.png");
+            }
+        }
+
+        &:focus-within {
+            border-color: var(--light-main);
+            background-color: var(--main-off);
+            box-shadow: var(--main-glow);
+
+            & .bar {
+                color: var(--bright-main);
+            }
+
+            & .prompt-input {
+                color: var(--bright-main);
+                background-color: var(--main-off);
+            }
+        }
+    }
+    
+
+    & .config-area {
+        width: 100%;
+        height: 100%;
+        min-height: 50px;
+
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+
+        & .generate-button {
+            width: 100%;
+            height: 100%;
+            background-color: var(--main);
+            border: none;
+            border-radius: var(--border-radius);
+            border-top: var(--border-weight-large) solid var(--light-main);
+            border-bottom: var(--border-weight-large) solid var(--darker-main);
+            color: var(--hl);
+            font-size: 20px;
+
+            transition: 120ms ease;
+
+            &::after {
+                content: 'Generate';
+            }
+
+            &:hover {
+                filter: brightness(var(--hover-lightness));
+                box-shadow: var(--main-glow);
+            }
+
+            &.generating {
+                filter: hue-rotate(-110deg);
+                cursor: not-allowed;
+                box-shadow: none;
+
+                transition: 120ms ease;
+
+                &::after {
+                    content: 'Generating.';
+                    animation: generating 1s ease infinite;
+                }
+            }
+
+            &.loading {
+                transition: 250ms ease;
+                animation: pulse-light .5s ease infinite;
+                background-color: var(--loading-color);
+                border-color: var(--loading-color);
+                box-shadow: none;
+                cursor: not-allowed;
+            }
+        }
+
+        & select {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg);
+            border: var(--border-weight) solid var(--hl-off);
+            border-radius: var(--border-radius);
+            color: var(--hl);
+            padding: 0 15px;
+            font-size: 20px;
+            outline: none;
+
+            transition: 120ms ease;
+            
+            &.loading {
+                transition: 250ms ease;
+                animation: pulse-light .5s ease infinite;
+                background-color: var(--loading-color);
+                border-color: var(--loading-color);
+            }
+
+            &:hover {
+                filter: brightness(var(--hover-lightness));
+            }
+        }
+    }
+}
+
+select {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+@keyframes generating {
+    33% {
+        content: "Generating..";
+    }
+    66% {
+        content: "Generating...";
+    }
+}
+
+@keyframes pulse-light {
+    0%, 100% {
+        filter: brightness(1.3);
+    }
+    50% {
+        filter: brightness(1.8);
+    }
+}

@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "https://corolitic-hattie-pseudoeconomically.ngrok-free.dev";
+const automodsApi = "https://targets-scanners-endorsed-womens.trycloudflare.com";
 
 let mutedSounds = false;
 

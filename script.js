@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "https://save-bathrooms-colleagues-filter.trycloudflare.com";
+const automodsApi = "https://senators-sponsorship-without-catalogs.trycloudflare.com";
 
 let mutedSounds = false;
 

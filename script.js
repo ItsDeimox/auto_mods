@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "https://sheffield-term-facing-bloom.trycloudflare.com";
+const automodsApi = "https://loc-freely-workout-wright.trycloudflare.com";
 
 let mutedSounds = false;
 

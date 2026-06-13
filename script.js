@@ -10,7 +10,7 @@ const pageSounds = document.querySelectorAll("#page_sfx");
 const xpSound = document.querySelector("#xp_sfx");
 const breakSound = document.querySelector("#break_sfx");
 
-const automodsApi = "https://reseller-atmosphere-org-lot.trycloudflare.com";
+const automodsApi = "https://pretty-catering-announced-councils.trycloudflare.com";
 
 let mutedSounds = false;
 
